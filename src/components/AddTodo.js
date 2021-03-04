@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const AddTodo = () => {
+export const AddTodo = ({ onCreate }) => {
+  const [value, setValue] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (value.trim()) {
+      onCreate(value);
+      setValue("");
+    }
+  }
+
   return (
-    <div className="form-group">
+    <form className="mb-3" onSubmit={handleSubmit}>
       <input
-        className="form-control form-control-sm"
+        className="form-control"
         type="text"
         placeholder="Zadejte úkol"
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
       />
-    </div>
+    </form>
   );
 };
