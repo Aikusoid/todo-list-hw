@@ -28,3 +28,26 @@ code {
   margin-left: 27px;
   font-size: 20px;
 }
+.form-check-input {
+  margin-left: 0;
+}
+.todo-title {
+  margin-left: 40px;
+  margin-right: 20px;
+}
+
+.remover {
+  border: none;
+  background-color: transparent;
+  color: gray;
+}
+
+.remover:hover {
+  color: black;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
