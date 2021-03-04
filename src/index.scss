@@ -12,3 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbar,
+.navbar-nav {
+  flex-direction: row;
+  justify-content: left;
+}
+
+.navbar-brand {
+  font-size: 27px;
+  margin-right: 27px;
+}
+
+.nav-link {
+  margin-left: 27px;
+  font-size: 20px;
+}

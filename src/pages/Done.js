@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Done() {
-  return <p>What I've alredy done</p>;
+  return <h1>What I've alredy done</h1>;
 }
