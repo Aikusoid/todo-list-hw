@@ -6,27 +6,29 @@ export const Navbar = () => (
     className="navbar navbar-expand-lg navbar-light "
     style={{ backgroundColor: "#e3f2fd", marginBottom: "1.5rem" }}
   >
-    <a className="navbar-brand" href="/">
-      Note App
-    </a>
+    <div class="container-fluid">
+      <a className="navbar-brand" href="/">
+        Note App
+      </a>
 
-    <ul className="navbar-nav">
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/" exact>
-          Nesplněné úkoly
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/done">
-          Hotové úkoly
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/alltodos">
-          Všechny úkoly
-        </NavLink>
-      </li>
-    </ul>
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/" exact>
+            Nesplněné úkoly
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/done">
+            Hotové úkoly
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/alltodos">
+            Všechny úkoly
+          </NavLink>
+        </li>
+      </ul>
+    </div>
   </nav>
 );
 
