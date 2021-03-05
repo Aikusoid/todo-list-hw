@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import Done from "./pages/Done";
 import Home from "./pages/Home";
 import Context from "./context/context";
 
-function App() {
+export default function App() {
   const [todos, setTodos] = useState(
     new Array(3).fill("").map((_, i) => ({
       id: i,
@@ -18,7 +18,7 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  function toggle(id) {
+  function toggleTodo(id) {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
@@ -39,13 +39,14 @@ function App() {
               path={"/"}
               exact
               render={() => (
-                <Home todos={todos} setTodos={setTodos} toggleTodo={toggle} />
+                <Home
+                  todos={todos}
+                  setTodos={setTodos}
+                  toggleTodo={toggleTodo}
+                />
               )}
             />
-            <Route
-              path={"/done"}
-              render={() => <Done todos={todos} toggle={toggle} />}
-            />
+            <Route path={"/done"} render={() => <Done todos={todos} />} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -56,5 +57,3 @@ function App() {
 // Importovala jsem komponenty BrouserRouter, Switch a Route y knihovny react-route-dom,
 // abych mohla vztrořit dvě stránky. Na zobrazení pouze jednoho routu jsem použila Switch component.
 // Parametr exact nastavuje Home page jako primární
-
-export default App;
