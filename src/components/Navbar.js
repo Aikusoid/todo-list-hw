@@ -21,6 +21,11 @@ export const Navbar = () => (
           Hotové úkoly
         </NavLink>
       </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" to="/alltodos">
+          Všechny úkoly
+        </NavLink>
+      </li>
     </ul>
   </nav>
 );

@@ -4,13 +4,16 @@ import { Navbar } from "./components/Navbar";
 import Done from "./pages/Done";
 import Home from "./pages/Home";
 import Context from "./context/context";
+import AllTodos from "./pages/AllTodos";
 
 export default function App() {
+  // const [termin, setTermin] = useState(Date.now());
   const [todos, setTodos] = useState(
-    new Array(3).fill("").map((_, i) => ({
+    new Array().fill("").map((_, i) => ({
       id: i,
-      title: `Note ${i + 1}`,
+      title: null,
       completed: false,
+      deadline: Date.now(),
     }))
   );
 
@@ -47,6 +50,10 @@ export default function App() {
               )}
             />
             <Route path={"/done"} render={() => <Done todos={todos} />} />
+            <Route
+              path={"/alltodos"}
+              render={() => <AllTodos todos={todos} />}
+            />
           </Switch>
         </div>
       </BrowserRouter>

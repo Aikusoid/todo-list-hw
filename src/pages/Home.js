@@ -3,13 +3,14 @@ import { AddTodo } from "../components/AddTodo";
 import { Todos } from "../components/Todos";
 
 export default function Home({ todos, setTodos, toggleTodo }) {
-  function addTodo(title) {
+  function addTodo(title, deadline) {
     setTodos(
       todos.concat([
         {
           title,
           id: Date.now(),
           completed: false,
+          deadline: deadline,
         },
       ])
     );
@@ -18,11 +19,7 @@ export default function Home({ todos, setTodos, toggleTodo }) {
   return (
     <React.Fragment>
       <AddTodo onCreate={addTodo} />
-      {todos.length ? (
-        <Todos todos={todos} onChange={toggleTodo} />
-      ) : (
-        <h3>Úkoly jsou splněné! 😊</h3>
-      )}
+      <Todos todos={todos} onChange={toggleTodo} />
     </React.Fragment>
   );
 }
