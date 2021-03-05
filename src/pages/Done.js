@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Context from "../context/context";
 
-export default function Done({ todos, toggle }) {
+export default function Done({ todos }) {
   const { removeTodo } = useContext(Context);
 
   return (

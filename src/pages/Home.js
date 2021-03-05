@@ -19,7 +19,7 @@ export default function Home({ todos, setTodos, toggleTodo }) {
     <React.Fragment>
       <AddTodo onCreate={addTodo} />
       {todos.length ? (
-        <Todos todos={todos} onToggle={toggleTodo} />
+        <Todos todos={todos} onChange={toggleTodo} />
       ) : (
         <h3>Úkoly jsou splněné! 😊</h3>
       )}
