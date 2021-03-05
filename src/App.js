@@ -1,20 +1,55 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import Done from "./pages/Done";
 import Home from "./pages/Home";
+import Context from "./context/context";
 
 function App() {
+  const [todos, setTodos] = useState(
+    new Array(3).fill("").map((_, i) => ({
+      id: i,
+      title: `Note ${i + 1}`,
+      completed: false,
+    }))
+  );
+
+  function removeTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
+
+  function toggle(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    );
+  }
+
   return (
-    <BrowserRouter>
-      <Navbar />
-      <div className="container">
-        <Switch>
-          <Route path={"/"} exact component={Home} />
-          <Route path={"/done"} component={Done} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <Context.Provider value={{ removeTodo }}>
+      <BrowserRouter>
+        <Navbar />
+        <div className="container">
+          <Switch>
+            <Route
+              path={"/"}
+              exact
+              render={() => (
+                <Home todos={todos} setTodos={setTodos} toggleTodo={toggle} />
+              )}
+            />
+            <Route
+              path={"/done"}
+              render={() => <Done todos={todos} toggle={toggle} />}
+            />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </Context.Provider>
   );
 }
 
