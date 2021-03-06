@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 // import TodoItem from "./TodoItem";
 import Context from "../context/context";
 
-export const Todos = ({ todos, onChange }) => {
-  const { removeTodo } = useContext(Context);
+export const Todos = ({ todos }) => {
+  const { removeTodo, toggleTodo } = useContext(Context);
 
   return (
     <ul className="list-group">
@@ -15,10 +15,13 @@ export const Todos = ({ todos, onChange }) => {
                 className="form-check-input me-1"
                 type="checkbox"
                 value=""
-                onChange={() => onChange(todo.id)}
+                onChange={() => toggleTodo(todo.id)}
               />
               <strong className="todo-title">{todo.title}</strong>
-              <small>{new Date(todo.deadline).toLocaleDateString()}</small>
+              <small>
+                {new Date(todo.deadline).toLocaleDateString()} /{" "}
+                {new Date(todo.deadline).toLocaleTimeString()}
+              </small>
               <button className="remover" onClick={() => removeTodo(todo.id)}>
                 <i className="fas fa-trash-alt"></i>
               </button>
