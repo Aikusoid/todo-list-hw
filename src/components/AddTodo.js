@@ -1,18 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "../context/context";
 
-export const AddTodo = ({ onCreate }) => {
-  const [value, setValue] = useState("");
-  const [deadline, setDeadline] = useState(Date.now() + 86400000);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (value.trim()) {
-      onCreate(value, deadline);
-
-      setValue("");
-      setDeadline(Date.now() + 86400000);
-    }
-  }
+export const AddTodo = () => {
+  const { handleSubmit, setValue, setDeadline, value } = useContext(Context);
 
   return (
     <form className="mb-3" onSubmit={handleSubmit}>
